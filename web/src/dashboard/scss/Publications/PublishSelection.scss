@@ -1,0 +1,16 @@
+@import '../partials/mixins';
+@import '../partials/variables';
+
+.publication-selection {
+  @include pop-up-position(-50%, 300px, 450px);
+  z-index: 9999;
+  .publication-selection__title {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1em;
+  }
+}
+.publication-selection__background {
+  @include background-blur;
+  z-index: 9998;
+}

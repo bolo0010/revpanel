@@ -1,0 +1,13 @@
+.not-found-container {
+  height: 100vh;
+  background-color: #E0E5EC;
+  .not-found {
+    padding: 100px;
+    .not-found__error {
+      font-size: 2rem;
+    }
+    .not-found__message {
+      font-size: 1.6rem;
+    }
+  }
+}

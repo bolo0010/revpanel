@@ -1,0 +1,32 @@
+@import '../partials/mixins';
+@import '../partials/variables';
+
+@media screen and (max-width: $mq-medium) {
+  .admin-edit {
+    @include pop-up-position(-50%, 95%, 95%);
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .admin-edit {
+    @include pop-up-position(-50%, 300px, 450px);
+  }
+}
+
+.admin-edit {
+  .admin-edit__title {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1em;
+  }
+  .admin-edit__form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+}
+.admin-edit__background {
+  @include background-blur;
+}

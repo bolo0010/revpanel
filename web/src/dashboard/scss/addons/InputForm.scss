@@ -1,0 +1,72 @@
+@import "../partials/mixins";
+@import "../partials/variables";
+
+.input-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+
+  .input-form-label {
+    @include label-default($label-color, $label-font-weight, $label-padding)
+  }
+
+  .input-form-input {
+    @include input-default($border-color);
+  }
+
+  .input-form-input:focus {
+    @include input-focus($main-color)
+  }
+}
+
+@media screen and (max-width: $mq-medium) {
+  .search-box {
+    .input-form-container--search {
+      justify-content: stretch;
+      font-size: 1.3rem;
+    }
+
+    .input-form-input {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+//@media screen and (min-width: $mq-medium) {
+//  .input-form-container--search {
+//    flex-direction: column;
+//  }
+//}
+
+.input-form-container--search {
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 5px;
+
+  .input-form-label {
+    padding: 0;
+    margin-right: 5px;
+  }
+}
+
+.input-form-container--terms {
+  width: 100%;
+}
+
+.input-form-container--password-show {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .input-form-input {
+    width: 85%;
+  }
+
+  .input-form-label {
+    align-self: stretch;
+    justify-self: stretch;
+    flex-grow: 5;
+  }
+}
+

@@ -1,0 +1,78 @@
+@import "partials/variables";
+@import "partials/mixins";
+
+.header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $border-color;
+  .header__logo {
+    @include header-set-flex;
+    align-items: center;
+    margin-left: $header-margin;
+    width: $logo-size;
+    .logo {
+      width: 70%;
+      height: auto;
+    }
+    @media screen and (min-width: $mq-large) {
+      .logo {
+        width: 60%;
+      }
+    }
+    @media screen and (min-width: $mq-desktop) {
+      .logo {
+        width: 50%;
+      }
+    }
+  }
+  .header__user-info {
+    margin-right: $header-margin;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .user-info__avatar {
+      @include header-set-flex;
+      align-items: center;
+      width: $avatar-size;
+      .avatar {
+        width: 50%;
+        height: auto;
+      }
+    }
+    .user-info__login-data {
+      @include header-set-flex;
+    }
+    @media screen and (max-width: $mq-large) {
+      .user-info__login-data {
+        display: none;
+      }
+      .header__hamburger {
+        @include header-set-flex;
+        font-size: 2rem;
+        padding: 5px;
+        transition: all 0.5s ease;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .header__hamburger--rotate {
+        transform: rotate(90deg);
+      }
+    }
+    @media screen and (min-width: $mq-large) {
+      .header__hamburger {
+        display: none;
+      }
+      .user-info__login-data {
+        width: $header-user-info-width;
+      }
+      .role {
+        color: red;
+      }
+    }
+  }
+}

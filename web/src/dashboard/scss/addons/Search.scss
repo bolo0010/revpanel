@@ -1,0 +1,23 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.table-search {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  @media screen and (max-width: $mq-medium) {
+    .search-box {
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+  @media screen and (min-width: $mq-medium) {
+    .search-box {
+      align-self: flex-end;
+    }
+  }
+  .search-box {
+    display: flex;
+  }
+}

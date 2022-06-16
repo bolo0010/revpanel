@@ -1,0 +1,1 @@
+export const messageTimeout = 2500;

@@ -1,0 +1,10 @@
+@import "../partials/variables";
+
+.change-message {
+  font-family: $font-family;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+  color: darken($main-color, 10);
+  border-radius: 3px;
+}

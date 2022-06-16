@@ -1,0 +1,19 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.terms {
+  line-height: 1.3rem;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  align-content: space-evenly;
+  .terms__link {
+    margin-top: 10px;
+    color: $main-color;
+    text-decoration: underline dotted;
+    text-align: center;
+  }
+  .terms__link:hover {
+    @include link-hover($main-color);
+  }
+}

@@ -1,0 +1,36 @@
+@import "../partials/variables";
+
+.buttons-container {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+  flex-basis: 100%;
+  .buttons-confirmation, .buttons-cancel {
+    display: inline-flex;
+    background-color: $main-color;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .buttons-confirmation:hover {
+    background-color: darken($main-color, 10);
+  }
+  .buttons-confirmation--disabled {
+    background-color: $disable-color;
+    cursor: initial;
+    &:hover {
+      background-color: $disable-color;
+    }
+  }
+  .buttons-cancel {
+    background-color: $main-color;
+  }
+  .buttons-cancel:hover {
+    background-color: darken($main-color, 10);
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,39 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-medium) {
+  .TextEditor-root {
+    .TextEditor-buttons {
+      overflow-x: scroll;
+      width: 100%;
+      height: 300px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .TextEditor-buttons::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .TextEditor-root {
+    .TextEditor-buttons {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.TextEditor-buttons {
+  display: flex;
+  .TextEditor-button__save,
+  .TextEditor-button__send,
+  .TextEditor-button__return,
+  .TextEditor-button__archive,
+  .TextEditor-button__comment {
+    margin-left: 5px;
+  }
+  .TextEditor-button__back {
+    margin-right: auto;
+  }
+}

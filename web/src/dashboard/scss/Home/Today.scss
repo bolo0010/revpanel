@@ -1,0 +1,9 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.today__date {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding: 0 10px;
+}

@@ -1,0 +1,25 @@
+@import "../partials/mixins";
+@import "../partials/variables";
+
+.text-area-form-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  .text-area-form-label {
+    @include label-default($label-color, $label-font-weight, $label-padding)
+  }
+  .text-area-form-input {
+    max-width: 100%;
+    font-size: 0.9em;
+    display: block;
+    padding: 5px 5px 0 10px;
+    height: 75px;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+  }
+  .text-area-form-input:focus {
+    @include input-focus($main-color)
+  }
+}
+

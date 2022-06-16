@@ -1,0 +1,34 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-medium) {
+  .terms-edit {
+    @include pop-up-position(-50%, 95%, 95%);
+
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .terms-edit {
+    @include pop-up-position(-50%, 300px, 450px);
+  }
+}
+
+.terms-edit {
+  .terms-edit__title {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1em;
+  }
+  .terms-edit__form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+}
+
+.terms-edit__background {
+  @include background-blur;
+}

@@ -1,0 +1,17 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.birthday__description {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  font-weight: normal;
+  padding: 0 10px;
+}
+
+.birthday__user {
+  color: $main-color;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-shadow: 1px 1px $main-color;
+}

@@ -1,0 +1,33 @@
+@import '../partials/variables';
+@import '../partials/mixins';
+
+.TextEditor-comment{
+  border-top: 1px solid $border-color;
+  padding: 5px 0;
+  margin: 5px 0;
+  .TextEditor-comment__header{
+    display: flex;
+    align-items: center;
+    .TextEditor-comment__buttons {
+        margin-left: auto;
+      .TextEditor-comment__button {
+        margin: 0 5px;
+        color: $main-color;
+        text-decoration: none;
+        &:hover {
+          @include link-hover($main-color);
+        }
+      }
+    }
+    .TextEditor-comment__author{
+      opacity: 0.5;
+      font-size: 0.7rem;
+    }
+  }
+  .TextEditor-comment__content {
+    font-size: 0.8rem;
+    .TextEditor-comment__content--error {
+      opacity: 0.5;
+    }
+  }
+}

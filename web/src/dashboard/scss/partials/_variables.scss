@@ -1,0 +1,33 @@
+//root
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$border-color: #E0E5EC;
+$panel-color: #F5F7FB;
+$main-color: #C683FF;
+//media-queries
+$mq-small: 576px;
+$mq-medium: 768px;
+$mq-large: 992px;
+$mq-desktop: 1200px;
+//header
+$logo-size: 100px;
+$avatar-size: 100px;
+$header-margin: 50px;
+$header-user-info-width: 15%;
+//nav
+$nav-link-color: #a0a5aC;
+$nav-height: 50px;
+$nav-margin: 10px;
+//footer
+$footer-height: 50px;
+$footer-right-border: #a0a5aC;
+$footer-link-color: #a0a5aC;
+$footer-font-size: 14px;
+$footer-rules-margin: 5px;
+//labels
+$label-color: #49506C;
+$label-font-weight: 600;
+$label-padding: 5px 0;
+//buttons
+$disable-color: lighten(gray, 30%);
+

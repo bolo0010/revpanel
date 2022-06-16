@@ -1,0 +1,75 @@
+@mixin link-hover($color) {
+  color: darken($color, 25%);
+}
+@mixin input-focus($color){
+  border: 1px solid $color;
+  outline: none;
+}
+@mixin header-set-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@mixin settings-title($padding) {
+  width: 100%;
+  color: #495057;
+  font-weight: normal;
+  padding: $padding;
+}
+@mixin settings-border($color) {
+  background-color: white;
+  border: 1px solid $color;
+}
+@mixin background-blur {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #202020;
+  opacity: 0.55;
+  overflow: hidden;
+  z-index: 5;
+}
+@mixin pop-up-position($translateY, $min-width, $max-width) {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: white;
+  min-width: $min-width;
+  max-width: $max-width;
+  max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, $translateY);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  z-index: 6;
+}
+@mixin settings-form-container {
+  width: 100%;
+  padding: 0 15px 15px 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@mixin label-default($label-color, $label-font-weight, $label-padding) {
+  color: $label-color;
+  font-weight: $label-font-weight;
+  padding: $label-padding;
+}
+
+@mixin input-default($border-color) {
+  max-width: 100%;
+  font-size: 0.9em;
+  display: block;
+  padding: 0 5px 0 10px;
+  height: 25px;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+}
+
+

@@ -1,0 +1,45 @@
+@import "../partials/variables";
+
+@media screen and (max-width: $mq-large) {
+  .main-button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: $mq-large) {
+  .main-button {
+    font-size: 16px;
+  }
+}
+
+.main-button {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-color;
+  border-radius: 3px;
+  transition: all 0.4s;
+  cursor: pointer;
+  border: 1px solid transparent;
+  max-height: 30px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  &:hover {
+    background-color: darken($main-color, 10);
+  }
+}
+
+.main-button--disabled {
+  background-color: $disable-color;
+  cursor: initial;
+  &:hover {
+    background-color: $disable-color;
+  }
+}
+
+.main-button--disable-decoration {
+  text-decoration: none;
+}
+

@@ -1,0 +1,18 @@
+@import '../partials/variables';
+
+.TextEditor-comments {
+  min-height: 75px;
+  max-height: 100px;
+  overflow-y: auto;
+  margin-top: 5px;
+  border-bottom: 2px solid $border-color;
+}
+
+.TextEditor-no-comment {
+  padding-bottom: 5px;
+  border-bottom: 2px solid $border-color;
+  .TextEditor-no-comment__text {
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+}

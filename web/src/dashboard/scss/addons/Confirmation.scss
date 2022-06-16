@@ -1,0 +1,38 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-medium) {
+  .confirmation-container  {
+    @include pop-up-position(-50%, 85%, 90%);
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .confirmation-container  {
+    @include pop-up-position(-50%, 275px, 375px);
+  }
+}
+
+.confirmation-container {
+  z-index: 9999;
+  .confirmation-title {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid darken($border-color, 20%);
+  }
+  .confirmation-text {
+    display: flex;
+    color: #000;
+    margin: 0 auto;
+    line-height: 2rem;
+    font-size: 1.1rem;
+  }
+}
+.confirmation-background {
+  @include background-blur;
+  z-index: 9998;
+}
+
+

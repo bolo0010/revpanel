@@ -1,0 +1,26 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  .select-label{
+    @include label-default($label-color, $label-font-weight, $label-padding)
+  }
+
+  .select-options {
+    @include input-default($border-color)
+  }
+
+  .select-options:focus {
+    @include input-focus($main-color)
+  }
+}
+
+.select-container--max-width {
+  width: 100%;
+}
+
+
+

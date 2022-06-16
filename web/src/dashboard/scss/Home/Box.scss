@@ -1,0 +1,16 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.home-box {
+  min-width: 20%;
+  @include settings-border($border-color);
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  flex-direction: column;
+  padding: 15px 0;
+  .home-box__title {
+    @include settings-title(0 0 15px 15px);
+    font-size: 1.2rem;
+  }
+}

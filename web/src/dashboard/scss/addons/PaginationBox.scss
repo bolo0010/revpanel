@@ -1,0 +1,33 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-medium) {
+  .table-pagination {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+  .pagination-page-label {
+   font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .table-pagination {
+    flex-direction: column;
+  }
+}
+
+.table-pagination {
+  display: flex;
+  flex-grow: 2;
+  .pagination-page-select{
+    width: auto;
+    margin-left: 5px;
+  }
+  .pagination-page-label {
+    @include label-default($label-color, $label-font-weight, 0)
+  }
+  .pagination__selectors {
+    margin-top: 5px;
+  }
+}

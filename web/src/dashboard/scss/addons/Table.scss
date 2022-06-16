@@ -1,0 +1,110 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.table-container {
+  width: 100%;
+  margin: 20px auto;
+  @media screen and (max-width: $mq-medium) {
+    .table-settings {
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: $mq-medium) {
+    .table-settings {
+      flex-direction: row;
+    }
+  }
+  .table-settings {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.table {
+  table-layout: fixed;
+  border: 1px solid $border-color;
+  margin-top: 5px;
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  overflow-x: scroll;
+  display: block;
+  .table-row:nth-child(odd) {
+    background-color: darken($panel-color, 5%);
+  }
+  .table-row:nth-child(odd) > .tbody-row:last-child {
+    background-color: darken($panel-color, 6%);
+  }
+  .table-row:nth-child(even) > .tbody-row:last-child {
+    background-color: darken(white, 3%);
+  }
+  .table__thead {
+    .thead-column {
+      position: relative;
+      padding: 5px;
+      background-color: white;
+      font-size: 12px;
+      white-space: nowrap;
+      border-top: 0;
+      user-select: none;
+      .table-sort-desc {
+        box-shadow: none !important;
+        color: $main-color;
+        &:before {
+          content: "▼";
+          margin-left: 2px;
+        }
+      }
+
+      .table-sort-asc {
+        box-shadow: none !important;
+        color: $main-color;
+        &:before {
+          content: "▲";
+          margin-left: 2px;
+        }
+      }
+      .table-resizer {
+        display: inline-block;
+        background-color: darken($border-color, 5%);
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(50%);
+        z-index: 1;
+        touch-action: none;
+        &.isResizing {
+          background-color: darken($border-color, 15%);
+
+        }
+      }
+    }
+    .thead-column:nth-child(odd) {
+      border-right: 1px solid darken($border-color, 10%);
+    }
+    .thead-column:nth-child(odd) {
+      border-left: 1px solid darken($border-color, 10%);
+    }
+    .thead-column:last-child {
+      border-right: 1px solid darken($border-color, 10%);
+      border-left: 1px solid darken($border-color, 10%);
+    }
+    .thead-column:last-child > .table-resizer {
+      display: none;
+    }
+  }
+
+  .table__tbody {
+    .tbody-row {
+      position: relative;
+      padding: 5px;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+      border: 1px solid darken($border-color, 10%);
+    }
+  }
+}

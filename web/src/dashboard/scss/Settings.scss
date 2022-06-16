@@ -1,0 +1,104 @@
+@import "./partials/variables";
+@import "./partials/mixins";
+
+@media screen and (max-width: $mq-large) {
+  .settings {
+    flex-direction: column;
+    .about-me {
+      width: 100%;
+    }
+    .edit {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .change-password {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-large) {
+  .settings {
+    flex-direction: row;
+    .about-me {
+      width: 20%;
+    }
+    .edit {
+      width: 40%;
+    }
+    .change-password {
+      width: 30%;
+    }
+  }
+}
+
+.settings {
+  background-color: $panel-color;
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30px 80px 30px;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  .settings__title {
+    @include settings-title(30px);
+  }
+  .about-me {
+    @include settings-border($border-color);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    max-height: 100px;
+    .about-me__avatar {
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      .avatar {
+      }
+    }
+    .about-me__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 10px;
+      overflow: hidden;
+      .role {
+        color: red;
+      }
+      .title {
+        color: blue;
+      }
+    }
+  }
+  .edit {
+    @include settings-border($border-color);
+    margin-bottom: auto;
+    .edit__title {
+      @include settings-title(15px);
+    }
+    .edit__form {
+      @include settings-form-container;
+      justify-content: space-between;
+    }
+  }
+  .change-password {
+    @include settings-border($border-color);
+    margin-bottom: auto;
+    .change-password__form {
+      @include settings-form-container;
+    }
+    .change-password__title {
+      @include settings-title(15px);
+    }
+  }
+}
+
+.form__submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  flex-basis: 100%;
+}

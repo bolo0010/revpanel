@@ -1,0 +1,9 @@
+.search-box__container {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .search-box__select {
+    height: 100%;
+  }
+}

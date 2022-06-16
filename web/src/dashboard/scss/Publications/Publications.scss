@@ -1,0 +1,57 @@
+@import "../partials/variables";
+
+@media screen and (max-width: $mq-medium) {
+  .publications-control__buttons {
+    .control-button__other-buttons {
+      .control-button {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .control-add {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .publications-control__buttons {
+    display: flex;
+    justify-content: flex-end;
+    .control-button__other-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      .control-button {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: 20px;
+      }
+    }
+    .control-add {
+      width: auto;
+      flex-grow: 2;
+      flex-basis: 20%;
+    }
+  }
+}
+
+.publications-container {
+  background-color: $panel-color;
+  min-height: 80vh;
+  padding-bottom: 50px;
+  .publications-control {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    margin: 0 auto;
+    .publication-edit__icon {
+      cursor: pointer;
+    }
+    .publication-edit__icon:hover {
+      color: lighten(black, 40%);
+    }
+  }
+}
+
