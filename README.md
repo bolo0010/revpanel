@@ -17,4 +17,4 @@ It is a panel to manage publications.
 Login: AdminUser  
 Password: password1234
 
-### Demo: [WWW](https://origami.networkmanager.pl/)
+### Demo: [WWW](https://origami.networkmanager.pl/panel)
