@@ -66,7 +66,7 @@ Also you will need a database. Models are defined in the folder: `api/db/models`
 
 ## Keys
 
-You will have to generate public and private keys:
+You will have to generate public and private keys:  
 `id_rsa_priv.pem`  
 `id_rsa_pub.pem`  
 
