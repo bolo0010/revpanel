@@ -57,24 +57,24 @@ Each group has the permissions of a group lower in the hierarchy.
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file:
-`DB_NAME`
-`DB_USERNAME`
-`DB_PASS`
+To run this project, you will need to add the following environment variables to your .env file:  
+`DB_NAME`  
+`DB_USERNAME`  
+`DB_PASS`  
 
 Also you will need a database. Models are defined in the folder: `api/db/models`
 
 ## Keys
 
 You will have to generate public and private keys:
-`id_rsa_priv.pem`
-`id_rsa_pub.pem`
+`id_rsa_priv.pem`  
+`id_rsa_pub.pem`  
 
 Algorithm: `RS256`
 
 ## Example account
 
-Login: AdminUser 
+Login: AdminUser  
 Password: password1234
 
 ### Demo: [WWW](https://origami.networkmanager.pl/panel)
