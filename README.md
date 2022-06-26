@@ -72,7 +72,7 @@ You will have to generate public and private keys:
 
 Algorithm: `RS256`
 
-### Example account
+## Example account
 
 Login: AdminUser 
 Password: password1234
