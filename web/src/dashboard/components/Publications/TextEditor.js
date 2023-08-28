@@ -226,7 +226,7 @@ const TextEditor = ({
                 corrector: res.data.corrector
             });
         } catch (err) {
-            //TODO zrobić error
+            setMessage(<Message message={error.response.data.message} />);
         }
         setIsLoading(false);
     };

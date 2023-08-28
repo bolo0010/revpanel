@@ -8,7 +8,6 @@ import moment from 'moment';
 import axios from 'axios';
 import { useState } from 'react';
 import MainButton from '../addons/MainButton';
-import { convertFromRaw, EditorState } from 'draft-js';
 import { uniqueId } from '../../config/id-generator';
 import { useSelector } from 'react-redux';
 
@@ -50,7 +49,7 @@ const Publications = () => {
                                                  disablePopout={disablePublicationPopOut} />);
             }
         } catch (err) {
-            //TODO zrobić error
+            console.error(err);
         }
     };
 
@@ -64,14 +63,14 @@ const Publications = () => {
                 params: {
                     csv: true,
                     page: 0,
-                    size: 999999999 //TODO do zmiany na bardziej responsywną wersję
+                    size: Number.MAX_SAFE_INTEGER
                 }
             });
             if (res.status === 200) {
-                const publications = res.data.publications.map((publication) => {
+                const publications = res.data.rows.map((publication) => {
+                    delete publication.content;
                     return {
                         ...publication,
-                        content: EditorState.createWithContent(convertFromRaw(JSON.parse(publication.content))).getCurrentContent().getPlainText('\u0001'),
                         author: publication.author.nick,
                         corrector: publication.corrector ? publication.corrector.nick : '',
                         publisher: publication.publisher ? publication.publisher.nick : '',
@@ -83,7 +82,6 @@ const Publications = () => {
                 setPublicationsDataCSV({ data: publications, isDataDownloaded: true });
             }
         } catch (err) {
-            //TODO obsłużyć błąd
             console.error(err);
             setPublicationsDataCSV(({ data }) => ({ ...data, isDataDownloaded: false }));
         }
@@ -93,6 +91,7 @@ const Publications = () => {
         <CSVLink
             data={publicationsDataCSV.data}
             filename={`publications-${moment().format('YYYY-MM-DD')}.csv`}
+            separator={';'}
             target='_blank'
             className='main-button main-button--disable-decoration'
             asyncOnClick={true}

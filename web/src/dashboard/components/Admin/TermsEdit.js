@@ -55,7 +55,7 @@ const TermsEdit = ({ setChangeTermsForm }) => {
                 data: terms
             });
         } catch (err) {
-            //TODO zrobić errora
+            console.error(err);
         }
     };
 

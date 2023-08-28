@@ -94,7 +94,7 @@ const Admin = () => {
                 withCredentials: true,
                 params: {
                     page: 0,
-                    size: 999999999 //TODO do zmiany na bardziej responsywną wersję
+                    size: Number.MAX_SAFE_INTEGER
                 }
             });
             if (res.status === 200) {

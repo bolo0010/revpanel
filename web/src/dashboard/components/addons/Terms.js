@@ -26,7 +26,7 @@ const Terms = () => {
                 setTerms(res.data);
             }
         } catch (err) {
-            console.error(err); //TODO obsłużyć błąd
+            console.error(err);
         }
     };
 
