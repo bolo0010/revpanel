@@ -1,5 +1,6 @@
+import React from 'react';
 import axios from 'axios';
-import { cloneElement, useEffect, useMemo, useState } from 'react';
+import {useEffect, useState } from 'react';
 import { startInitialDate } from '../../config/initial-dates';
 import { PaginationBox } from '../addons/PaginationBox';
 import { publicationSuffix } from '../../config/suffixes';
@@ -163,7 +164,7 @@ const PublicationsTable = ({ setPublicationPopOut, disablePopOut }) => {
                 withCredentials: true,
                 params
             });
-            const { publications, totalPages, totalItems } = res.data;
+            const { rows, totalPages, totalItems } = res.data;
             if (res.status === 200 && totalItems === 0) {
                 setPublications([{
                         id: '-1',
@@ -172,7 +173,7 @@ const PublicationsTable = ({ setPublicationPopOut, disablePopOut }) => {
                 );
             }
             else if (res.status === 200) {
-                setPublications(publications);
+                setPublications(rows);
             }
             setCount(totalPages);
         } catch (err) {

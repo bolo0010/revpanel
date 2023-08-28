@@ -1,4 +1,6 @@
+import React from 'react';
 import '../../scss/addons/SelectForm.scss';
+import { uniqueId } from '../../config/id-generator';
 
 const SelectForm = ({
                         label,
@@ -13,6 +15,7 @@ const SelectForm = ({
     if (maxContainerWidth) {
         containerClasses = 'select-container select-container--max-width'
     }
+    const id = uniqueId() + suffix;
     return (
         <>
             <div className={containerClasses}>
@@ -20,7 +23,7 @@ const SelectForm = ({
                     {label}
                 </label>
                 <select
-                    id={`select${suffix}`}
+                    id={id}
                     onChange={(event) => handleChange(event)}
                     name='select'
                     value={selected}

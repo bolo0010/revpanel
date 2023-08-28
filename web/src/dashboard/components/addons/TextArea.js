@@ -1,5 +1,6 @@
-import '../../scss/addons/TextArea.scss';
+import React from 'react';
 import { uniqueId } from '../../config/id-generator';
+import '../../scss/addons/TextArea.scss';
 
 const TextArea = ({
                       textAreaName,

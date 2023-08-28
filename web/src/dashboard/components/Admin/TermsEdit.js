@@ -1,10 +1,11 @@
-import '../../scss/Admin/TermsEdit.scss';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import InputForm from '../addons/InputForm';
 import ConfirmationButtons from '../addons/ConfirmationButtons';
 import TextArea from '../addons/TextArea';
 import axios from 'axios';
 import { adminSuffix } from '../../config/suffixes';
+import '../../scss/Admin/TermsEdit.scss';
 
 const TermsEdit = ({ setChangeTermsForm }) => {
     const [terms, setTerms] = useState({

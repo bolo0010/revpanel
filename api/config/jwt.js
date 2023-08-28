@@ -1,18 +1,21 @@
-const crypto = require('crypto');
-const jsonwebtoken = require('jsonwebtoken');
-const fs = require('fs');
-const { dirname, join } = require('path');
-const { fileURLToPath } = require('url');
+import crypto from 'crypto';
+import jsonwebtoken from 'jsonwebtoken';
+import fs from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const pathToKey = join(__dirname, '..', 'keys', 'id_rsa_priv.pem');
 const PRIV_KEY = fs.readFileSync(pathToKey, 'utf8');
 
-function validPassword(password, hash, salt) {
+export const validPassword = (password, hash, salt) => {
     const hashVerify = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
     return hash === hashVerify;
 }
 
-function genPassword(password) {
+export const genPassword = (password) => {
     const salt = crypto.randomBytes(32).toString('hex');
     const genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
 
@@ -22,7 +25,7 @@ function genPassword(password) {
     };
 }
 
-function issueJWT(user, role) {
+export const issueJWT = (user, role) => {
     const id = user.id;
     const roleId = role.id;
 
@@ -39,10 +42,4 @@ function issueJWT(user, role) {
     return {
         token: signedToken
     };
-}
-
-module.exports = {
-    validPassword,
-    genPassword,
-    issueJWT
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ConfirmationButtons from '../addons/ConfirmationButtons';
@@ -8,8 +9,8 @@ import Message from '../addons/Message';
 import Confirmation from '../addons/Confirmation';
 import { startInitialDate } from '../../config/initial-dates';
 import ShowPassword from '../addons/ShowPassword';
-import '../../scss/Admin/Add.scss';
 import { adminSuffix } from '../../config/suffixes';
+import '../../scss/Admin/Add.scss';
 
 const Add = ({setAddPopUp}) => {
     const [values, setValues] = useState({

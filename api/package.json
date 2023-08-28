@@ -3,11 +3,17 @@
   "varsion": "0.9.04",
   "private": true,
   "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild server.js --bundle --platform=node --packages=external --outdir=../server --define:import.meta.url=import_meta_url --banner:js=\"var import_meta_url = require('url').pathToFileURL(__filename)\" --format=cjs",
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
+    "esbuild": "0.18.15",
     "express": "^4.17.2",
     "express-rate-limit": "^6.4.0",
     "jsonwebtoken": "^8.5.1",

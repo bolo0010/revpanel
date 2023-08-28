@@ -1,3 +1,4 @@
+import React from 'react';
 import InputForm from '../addons/InputForm';
 import { adminSuffix, publicationSuffix } from '../../config/suffixes';
 import { publicationSearchTypes } from '../../config/publication-search-types';
@@ -87,7 +88,7 @@ export const SearchInputs = ({ searchCategory, search, handleSearch }) => (
                             value={1}>
                             Tak
                         </option>
-                        ))}
+                        ))
                     </select>
                 ) : (
                 <InputForm

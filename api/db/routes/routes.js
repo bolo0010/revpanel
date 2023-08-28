@@ -1,14 +1,14 @@
-const express = require('express');
-const publicationRoutes = require('./publication-routes.js');
-const userRoutes = require('./user-routes.js');
-const roleRoutes = require('./role-routes.js');
-const publicationTypeRoutes = require('./publication-type-routes.js');
-const publicationStateRoutes = require('./publication-state-routes.js');
-const publicationCommentsRoutes = require('./publication-comment-routes.js');
-const publicationRouteRoutes = require('./publication-route-routes.js');
-const authRoutes = require('./auth-routes.js');
-const termsRoutes = require('./term-routes.js');
-const passport = require('passport');
+import express from 'express';
+import publicationRoutes from './publications.routes.js';
+import userRoutes from './users.routes.js';
+import roleRoutes from './roles.routes.js';
+import publicationTypeRoutes from './publications-types.routes.js';
+import publicationStateRoutes from './publications-states.routes.js';
+import publicationCommentsRoutes from './publications-comments.routes.js';
+import publicationRouteRoutes from './publications-routes.routes.js';
+import authRoutes from './auth.routes.js';
+import termsRoutes from './terms.routes.js';
+import passport from 'passport';
 
 const routes = express();
 const authenticate = passport.authenticate('jwt', { session: false });
@@ -23,4 +23,4 @@ routes.use('/publications-routes', authenticate, publicationRouteRoutes);
 routes.use('/terms', authenticate, termsRoutes);
 routes.use('/auth', authRoutes);
 
-module.exports = routes;
+export default routes;

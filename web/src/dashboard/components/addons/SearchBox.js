@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../scss/addons/SearchBox.scss';
 
 export const SearchBox = ({ searchCategory, suffix, handleCategorySearchChange, tableColumns }) => (

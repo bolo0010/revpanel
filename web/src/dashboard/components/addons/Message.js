@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../scss/addons/Message.scss';
 
 const Message = ({ message }) => {

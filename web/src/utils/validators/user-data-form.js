@@ -1,18 +1,3 @@
-const validations = {
-    firstName: false,
-    secondName: false,
-    nick: false,
-    province: false,
-    city: false,
-    phoneNumber: false,
-    dateOfBirth: false,
-    inpost: false,
-    role: false,
-    title: false,
-    password1: false,
-    password2: false,
-};
-
 export const userRequiredDataValidation = (data) => {
     let valid = false;
     let errorMessage = '';

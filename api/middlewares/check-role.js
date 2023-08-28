@@ -1,14 +1,9 @@
-const { adminRoles, mainAdminRole } = require('../config/user-data.js');
+import { AdminsGroup } from '../config/roles.js';
 
 const checkUserHaveAdminRoles = (role) => {
-    return adminRoles.includes(role);
+    return AdminsGroup.includes(role);
 };
-
-const checkUserHaveHeadAdminRole = (role) => {
-    return mainAdminRole === role;
-};
-
-const canSeeRoles = (req, res, next) => {
+export const canSeeRoles = (req, res, next) => {
     if (checkUserHaveAdminRoles(req.user.role)) next();
     else {
         res.status(401).json({
@@ -18,7 +13,7 @@ const canSeeRoles = (req, res, next) => {
     }
 };
 
-const canModifyAndSeeUsers = (req, res, next) => {
+export const canModifyAndSeeUsers = (req, res, next) => {
     if (checkUserHaveAdminRoles(req.user.role)) next();
     else {
         res.status(401).json({
@@ -27,8 +22,3 @@ const canModifyAndSeeUsers = (req, res, next) => {
         });
     }
 };
-
-module.exports = {
-    canSeeRoles,
-    canModifyAndSeeUsers
-}

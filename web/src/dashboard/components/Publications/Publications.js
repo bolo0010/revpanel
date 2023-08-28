@@ -1,3 +1,4 @@
+import React from 'react';
 import TextEditor from './TextEditor';
 import 'draft-js/dist/Draft.css';
 import '../../scss/Publications/Publications.scss';
@@ -7,11 +8,9 @@ import moment from 'moment';
 import axios from 'axios';
 import { useState } from 'react';
 import MainButton from '../addons/MainButton';
-import Add from '../Admin/Add';
 import { convertFromRaw, EditorState } from 'draft-js';
 import { uniqueId } from '../../config/id-generator';
 import { useSelector } from 'react-redux';
-import { adminRoles } from '../../config/id-roles';
 
 const Publications = () => {
     const id_user = useSelector(({ user }) => user.value.id);

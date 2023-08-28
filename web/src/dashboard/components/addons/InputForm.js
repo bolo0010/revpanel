@@ -1,5 +1,6 @@
-import '../../scss/addons/InputForm.scss';
+import React from 'react';
 import { uniqueId } from '../../config/id-generator';
+import '../../scss/addons/InputForm.scss';
 
 const InputForm = ({
     labelName,

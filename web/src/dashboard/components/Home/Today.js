@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import '../../scss/Home/Box.scss'

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ConfirmationButtons from '../addons/ConfirmationButtons';
@@ -11,9 +12,9 @@ import {
 import Message from '../addons/Message';
 import Confirmation from '../addons/Confirmation';
 import { startInitialDate } from '../../config/initial-dates';
-import '../../scss/Admin/Edit.scss';
 import ShowPassword from '../addons/ShowPassword';
 import { adminSuffix } from '../../config/suffixes';
+import '../../scss/Admin/Edit.scss';
 
 const Edit = ({ user_id, popout, refreshTable }) => {
     const [values, setValues] = useState({
@@ -41,6 +42,11 @@ const Edit = ({ user_id, popout, refreshTable }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [disableButtonOnError, setDisableButtonOnError] = useState(false);
 
+    useEffect(() => {
+        setDisableButtonOnError(false);
+        getRoles();
+    }, []);
+
     const isActiveOptions = [
         {
             id: 0,
@@ -62,11 +68,6 @@ const Edit = ({ user_id, popout, refreshTable }) => {
             message: 'Zaakceptowany'
         }
     ];
-
-    useEffect(() => {
-        setDisableButtonOnError(false);
-        getRoles();
-    }, []);
 
     const getRoles = async () => {
         setIsLoading(true);
@@ -100,9 +101,6 @@ const Edit = ({ user_id, popout, refreshTable }) => {
                 method: 'GET',
                 url: `/api/users/${user_id}`,
                 withCredentials: true,
-                params: {
-                    all: true
-                }
             });
             if (res.status === 200) {
                 setValues({
@@ -130,7 +128,7 @@ const Edit = ({ user_id, popout, refreshTable }) => {
         setIsLoading(false);
     };
 
-    const handlePasswordShow = (e, name) => {
+    const handlePasswordShow = (e) => {
         e.preventDefault();
         setShowPassword(!showPassword)
     }

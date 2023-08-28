@@ -1,6 +1,7 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
-import '../../scss/addons/Terms.scss';
 import axios from 'axios';
+import '../../scss/addons/Terms.scss';
 
 const Terms = () => {
     const [terms, setTerms] = useState({

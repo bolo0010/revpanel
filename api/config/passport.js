@@ -1,8 +1,11 @@
-const { Strategy } = require('passport-jwt');
-const { dirname, join } = require('path');
-const { fileURLToPath } = require('url');
-const fs  = require('fs');
-const User = require('../db/models/user-model.js');
+import { Strategy } from 'passport-jwt';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import User from '../db/models/users.model.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const pathToKey = join(__dirname, '..', 'keys', 'id_rsa_pub.pem');
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
@@ -23,7 +26,7 @@ const options = {
     algorithms: ['RS256']
 };
 
-module.exports = passport => {
+export default passport => {
     passport.use(
         new Strategy(options, (jwt_payload, done) => {
             User.findOne({

@@ -1,6 +1,6 @@
-import '../../scss/Publications/Comments.scss'
-import Comment from './Comment';
 import React from 'react';
+import Comment from './Comment';
+import '../../scss/Publications/Comments.scss'
 
 const Comments = ({comments, setConfirmation, refreshPublication}) => {
     if (comments.length < 1) return (

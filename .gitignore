@@ -90,7 +90,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+api/.env
 .env.test
 .env.production
 

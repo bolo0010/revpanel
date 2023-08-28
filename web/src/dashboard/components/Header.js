@@ -1,9 +1,9 @@
-import * as React from 'react';
-import '../scss/Header.scss';
-import avatar1 from '../img/avatar1.svg';
-import header from '../img/header.svg';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import header from '../img/header.svg';
+import avatar1 from '../img/avatar1.svg';
+import '../scss/Header.scss';
 
 const Header = ({toggleMobileMenu, isHamburgerClicked}) => {
     const { nick } = useSelector(({user}) => user.value);

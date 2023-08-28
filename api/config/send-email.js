@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const sendRegisterConfirmationEmail = async (user) => {
+export const sendRegisterConfirmationEmail = async (user) => {
     try {
         await axios({
             method: 'POST',
@@ -18,7 +18,3 @@ const sendRegisterConfirmationEmail = async (user) => {
         console.error(e);
     }
 };
-
-module.exports = {
-    sendRegisterConfirmationEmail
-}

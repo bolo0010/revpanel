@@ -1,7 +1,8 @@
-import '../scss/Nav.scss';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import '../scss/Nav.scss';
 
 const Nav = ({isHamburgerClicked, setIsHamburgerClicked}) => {
     const handleLogout = async () => {
@@ -10,6 +11,7 @@ const Nav = ({isHamburgerClicked, setIsHamburgerClicked}) => {
             url: '/api/auth/logout'
         });
     };
+
     const adminRoute = (
         <li className="nav-link" onClick={() => setIsHamburgerClicked(false)}>
             <Link to="/panel/admin" className="nav-link__link ">

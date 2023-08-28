@@ -1,5 +1,6 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import avatar1 from '../img/avatar1.svg';
 import '../scss/Settings.scss';
@@ -9,15 +10,17 @@ import InputForm from './addons/InputForm';
 import MainButton from './addons/MainButton';
 import {
     passwordValidation,
-    userOptionalDataValidation,
+    userOptionalDataValidation
 } from '../../utils/validators/user-data-form';
 import ShowPassword from './addons/ShowPassword';
 import { messageTimeout } from '../config/messages';
 import { adminSuffix } from '../config/suffixes';
 import { adminRoles } from '../config/id-roles';
+import { setUser } from '../../utils/stores/features/user/userSlice';
 
 const Settings = () => {
-    const user = useSelector(({user}) => user.value);
+    const dispatch = useDispatch();
+    const user = useSelector(({ user }) => user.value);
 
     const [values, setValues] = useState({
         firstName: user.firstName,
@@ -40,17 +43,17 @@ const Settings = () => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
 
-    useEffect( () => {
-        if(!message){
-            setIsMessageVisible(false)
-            return
+    useEffect(() => {
+        if (!message) {
+            setIsMessageVisible(false);
+            return;
         }
-        setIsMessageVisible(true)
+        setIsMessageVisible(true);
         const timeout = setTimeout(() => {
-            setIsMessageVisible(false)
+            setIsMessageVisible(false);
         }, messageTimeout);
         return () => clearTimeout(timeout);
-    }, [message])
+    }, [message]);
 
     const set = (name) => {
         return ({ target: { value } }) => {
@@ -64,14 +67,14 @@ const Settings = () => {
     const handlePasswordShow = (e, name) => {
         e.preventDefault();
         if (name === 'password1')
-            setShowPassword1(!showPassword1)
+            setShowPassword1(!showPassword1);
         if (name === 'password2')
-            setShowPassword2(!showPassword2)
-    }
+            setShowPassword2(!showPassword2);
+    };
 
     const handleChangePassword = (event) => {
         event.preventDefault();
-        const {valid, errorMessage} = passwordValidation(values);
+        const { valid, errorMessage } = passwordValidation(values);
         if (valid) {
             setConfirmation(
                 <Confirmation
@@ -81,14 +84,14 @@ const Settings = () => {
                 />
             );
         } else {
-            setMessage(<Message message={errorMessage} />)
-            setMessageType('password')
+            setMessage(<Message message={errorMessage} />);
+            setMessageType('password');
         }
     };
 
     const handleChangePasswordRequest = async (option) => {
         setConfirmation(null);
-        setMessageType('password')
+        setMessageType('password');
         if (option)
             try {
                 await axios({
@@ -104,15 +107,15 @@ const Settings = () => {
                     password1: '',
                     password2: ''
                 }));
-                setMessage(<Message message={'Hasło zostało zmienione.'} />)
+                setMessage(<Message message={'Hasło zostało zmienione.'} />);
             } catch (err) {
-                setMessage(<Message message={err.response.data.message} />)
+                setMessage(<Message message={err.response.data.message} />);
             }
     };
 
     const handleEditProfile = (event) => {
         event.preventDefault();
-        const {valid, errorMessage} = userOptionalDataValidation(values);
+        const { valid, errorMessage } = userOptionalDataValidation(values);
         if (valid) {
             setConfirmation(
                 <Confirmation
@@ -122,58 +125,69 @@ const Settings = () => {
                 />
             );
         } else {
-            setMessage(<Message message={errorMessage} />)
-            setMessageType('user')
+            setMessage(<Message message={errorMessage} />);
+            setMessageType('user');
         }
     };
 
     const handleEditProfileRequest = async (option) => {
         setConfirmation(null);
-        setMessageType('user')
-        if (option)
-            try {
-                await axios({
-                    method: 'PATCH',
-                    url: '/api/users/',
-                    withCredentials: true,
-                    data: {
-                        inpost: values.inpost,
-                        province: values.province,
-                        phoneNumber: values.phoneNumber,
-                        city: values.city,
-                        firstName: values.firstName,
-                        secondName: values.secondName,
-                        title: values.title,
-                        dateOfBirth: values.dateOfBirth,
-                        nick: values.nick
-                    }
-                });
-                setMessage(<Message message={'Dane zostały zmienione.'} />)
-                //TODO odświeżyć dane po zmianie
-            } catch (err) {
-                setMessage(<Message message={err.response.data.message} />)
-            }
+        setMessageType('user');
+        if (!option) return;
+
+        try {
+            await axios({
+                method: 'PATCH',
+                url: '/api/users/',
+                withCredentials: true,
+                data: {
+                    inpost: values.inpost,
+                    province: values.province,
+                    phoneNumber: values.phoneNumber,
+                    city: values.city,
+                    firstName: values.firstName,
+                    secondName: values.secondName,
+                    title: values.title,
+                    dateOfBirth: values.dateOfBirth,
+                    nick: values.nick
+                }
+            });
+            setMessage(<Message message={'Dane zostały zmienione.'} />);
+        } catch (err) {
+            setMessage(<Message message={err.response.data.message} />);
+        }
+
+        try {
+            const res = await axios({
+                method: 'GET',
+                url: '/api/users/current',
+                withCredentials: true
+            });
+            dispatch(setUser(res.data));
+        } catch (error) {
+            setMessage(<Message message={error.response.data.message} />);
+        }
     };
 
     return (
         <>
-            <main className="settings">
+            <main className='settings'>
                 {confirmation}
-                <h2 className="settings__title">Ustawienia konta</h2>
-                <section className="about-me">
-                    <div className="about-me__avatar">
-                        <img src={avatar1} alt="Avatar" className="avatar" />
+                <h2 className='settings__title'>Ustawienia konta</h2>
+                <section className='about-me'>
+                    <div className='about-me__avatar'>
+                        <img src={avatar1} alt='Avatar' className='avatar' />
                     </div>
-                    <div className="about-me__title">
-                        <p className="nick">{values.nick}</p>
-                        <p className="role">{values.role}</p>
-                        <p className="title">{values.title}</p>
+                    <div className='about-me__title'>
+                        <p className='nick'>{values.nick}</p>
+                        <p className='role'>{values.role}</p>
+                        <p className='title'>{values.title}</p>
                     </div>
                 </section>
-                <section className="edit">
-                    <h3 className="edit__title">Edytuj profil</h3>
+                <section className='edit'>
+                    <h3 className='edit__title'>Edytuj profil</h3>
                     {isMessageVisible && messageType === 'user' ? message : null}
-                    <form onSubmit={handleEditProfile} className="edit__form form">
+                    <form onSubmit={handleEditProfile} className='edit__form form'>
                         <InputForm
                             inputName={'firstName'}
                             inputOnChange={set('firstName')}
@@ -257,22 +271,23 @@ const Settings = () => {
                             inputValue={values.inpost}
                             suffix={adminSuffix}
                         />
-                        <div className="form__submit">
+                        <div className='form__submit'>
                             <MainButton type={'submit'} value={'Zapisz'} />
                         </div>
                     </form>
                 </section>
-                <section className="change-password">
-                    <h3 className="change-password__title">Zmień hasło</h3>
+                <section className='change-password'>
+                    <h3 className='change-password__title'>Zmień hasło</h3>
                     {isMessageVisible && messageType === 'password' ? message : null}
-                    <form onSubmit={handleChangePassword} className="change-password__form form">
+                    <form onSubmit={handleChangePassword} className='change-password__form form'>
                         <InputForm
                             inputName={'password1'}
                             inputOnChange={set('password1')}
                             labelName={'Nowe hasło'}
                             inputType={showPassword1 ? 'text' : 'password'}
                             inputValue={values.password1}
-                            passwordShowButton={<ShowPassword handlePasswordShow={(e) => handlePasswordShow(e, 'password1')}/>}
+                            passwordShowButton={<ShowPassword
+                                handlePasswordShow={(e) => handlePasswordShow(e, 'password1')} />}
                             otherContainerClass={'input-form-container--password-show'}
                             suffix={adminSuffix}
                         />
@@ -282,11 +297,12 @@ const Settings = () => {
                             labelName={'Powtórz hasło'}
                             inputType={showPassword2 ? 'text' : 'password'}
                             inputValue={values.password2}
-                            passwordShowButton={<ShowPassword handlePasswordShow={(e) => handlePasswordShow(e, 'password2')}/>}
+                            passwordShowButton={<ShowPassword
+                                handlePasswordShow={(e) => handlePasswordShow(e, 'password2')} />}
                             otherContainerClass={'input-form-container--password-show'}
                             suffix={adminSuffix}
                         />
-                        <div className="form__submit">
+                        <div className='form__submit'>
                             <MainButton type={'submit'} value={'Zapisz'} />
                         </div>
                     </form>

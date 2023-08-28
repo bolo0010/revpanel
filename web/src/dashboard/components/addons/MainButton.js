@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../scss/addons/MainButton.scss';
 
 const MainButton = ({ value, type, onClick = () => {}, isDisabled = false }) => {

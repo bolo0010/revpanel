@@ -1,3 +1,4 @@
+import React from 'react';
 import InputForm from '../addons/InputForm';
 import { adminSearchTypes } from '../../config/admin-search-types';
 import { adminSuffix } from '../../config/suffixes';
@@ -47,7 +48,7 @@ export const SearchInputs = ({ searchCategory, search, handleSearch }) => (
                             value={1}>
                             Aktywne
                         </option>
-                        ))}
+                        ))
                     </select>
                 ) : searchCategory === 'isTermsAccepted' ?
                     (
@@ -71,7 +72,7 @@ export const SearchInputs = ({ searchCategory, search, handleSearch }) => (
                                 value={1}>
                                 Zaakceptowano
                             </option>
-                            ))}
+                            ))
                         </select>
                     ) :
                     (

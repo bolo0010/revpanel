@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     TERMS_ACCEPTED,
     TERMS_NO_ACCEPTED,

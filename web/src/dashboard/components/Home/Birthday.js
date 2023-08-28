@@ -1,3 +1,4 @@
+import React from 'react';
 import "../../scss/Home/Box.scss"
 import "../../scss/Home/Birthday.scss"
 
@@ -8,7 +9,10 @@ export const Birthday = ({todayBirthday}) => {
             <h3 className='birthday__description'>{todayBirthday.description}</h3>
             {todayBirthday.users.map(user => (
                 <h4 className='birthday__user'
-                    key={user.firstName + user.secondName + user.dateOfBirth}>{user.firstName} {user.secondName}</h4>
+                    key={user.firstName + user.secondName + user.dateOfBirth}
+                >
+                    {user.firstName} {user.secondName}
+                </h4>
             ))}
         </section>
     );

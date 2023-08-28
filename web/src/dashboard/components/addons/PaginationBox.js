@@ -1,3 +1,4 @@
+import React from 'react';
 import { Pagination } from '@mui/material';
 import { paginationSizes } from '../../config/pagination-sizes';
 import '../../scss/addons/PaginationBox.scss';

@@ -1,16 +1,16 @@
+import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { CSVLink } from "react-csv";
 import moment from 'moment';
-import '../../scss/Admin/Admin.scss';
 import Add from './Add';
 import Edit from './Edit';
 import UsersTable from './UsersTable';
 import MainButton from '../addons/MainButton';
 import Confirmation from '../addons/Confirmation';
 import TermsEdit from './TermsEdit';
-import { adminRoles } from '../../config/id-roles';
+import '../../scss/Admin/Admin.scss';
 
 
 const Admin = () => {
@@ -62,7 +62,6 @@ const Admin = () => {
                 window.location.reload();
             }
         } catch (err) {
-            //TODO obsłużyć błąd
             console.error(err);
         }
     };
@@ -83,7 +82,6 @@ const Admin = () => {
                 window.location.reload();
             }
         } catch (err) {
-            //TODO obsłużyć błąd
             console.error(err);
         }
     };
@@ -100,11 +98,10 @@ const Admin = () => {
                 }
             });
             if (res.status === 200) {
-                const users = res.data.users.map((user) => {return {...user, role: user.role.role_pl}})
+                const users = res.data.rows.map((user) => {return {...user, role: user.role.role_pl}})
                 setUsersDataCSV({data: users, isDataDownloaded: true})
             }
         } catch (err) {
-            //TODO obsłużyć błąd
             console.error(err);
             setUsersDataCSV(({data}) => ({...data, isDataDownloaded: false}))
         }
@@ -118,6 +115,7 @@ const Admin = () => {
     const csvDownloadButton = (
         <CSVLink
             data={usersDataCSV.data}
+            separator={';'}
             filename={`users-${moment().format("YYYY-MM-DD")}.csv`}
             target="_blank"
             className="main-button main-button--disable-decoration"
@@ -150,10 +148,6 @@ const Admin = () => {
                                 <MainButton onClick={handleBlockAllUsers} type={'button'}
                                             value={'Zablokuj wszystkie konta'} />
                             </div>
-                            <div className='control-button control-send-mail'>
-                                {/*TODO do zrobienia później system wysyłania maili zbiorowych*/}
-                                <MainButton type={'button'} value={'Wyślij zbiorową wiadomość'} isDisabled={true} />
-                            </div>
                             <div className='control-button control-download-all-data'>
                                 {csvDownloadButton}
                             </div>
@@ -174,7 +168,6 @@ const Admin = () => {
             </main>
         </>
     );
-
 
     const render = !useSelector(({user}) => user.value.adminRoute) ? noPermissionRoute : adminRoute;
 

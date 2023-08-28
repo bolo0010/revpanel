@@ -1,14 +1,15 @@
+import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import { useBlockLayout, useResizeColumns, useSortBy, useTable } from 'react-table';
 import { useSticky } from 'react-table-sticky';
-import '../../scss/addons/Table.scss';
 import Spinner from './Spinner';
+import '../../scss/addons/Table.scss';
 
 export const Table = ({ values, handleEdit, setSortBy, cellProps = {}, Columns, DefaultColumn }) => {
     const [spinner, setSpinner] = useState(<Spinner/>)
 
-    const columns = useMemo(Columns, []);
-    const defaultColumn = useMemo(DefaultColumn, []);
+    const columns = useMemo(Columns, [Columns]);
+    const defaultColumn = useMemo(DefaultColumn, [DefaultColumn]);
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state: { sortBy } }
         = useTable(
         {
@@ -66,7 +67,7 @@ export const Table = ({ values, handleEdit, setSortBy, cellProps = {}, Columns, 
                             {spinner}
                         </td>
                     </tr>
-                    : rows.map((row, i) => {
+                    : rows.map((row) => {
                         prepareRow(row);
                         return (
                             <tr className='table-row' {...row.getRowProps()}>

@@ -1,10 +1,11 @@
-import '../scss/Login.scss';
+import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ErrorMessage from './addons/Message';
 import { setErrorMessage, setIsValid } from '../../utils/stores/features/login/loginSlice';
+import '../scss/Login.scss';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -58,6 +59,7 @@ const Login = () => {
     const errorMessage = useSelector(({ login }) => login.value.errorMessage);
     const isValid = useSelector(({ login }) => login.value.isValid);
     const error = !isValid ? <ErrorMessage message={errorMessage} /> : null;
+
     return (
         <>
             <div className='container'>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import TextArea from '../addons/TextArea';
-import '../../scss/Publications/AddComment.scss';
 import axios from 'axios';
 import Message from '../addons/Message';
 import { COMMENT_MAX_LENGTH } from '../../config/publication-managment';
+import '../../scss/Publications/AddComment.scss';
 
 const AddComment = ({
                         id_publication,
@@ -11,7 +11,7 @@ const AddComment = ({
                         setMessage,
                         refreshPublication,
                         id_publications_states,
-                        corrector_id
+                        id_corrector
                     }) => {
     const [comment, setComment] = useState('');
     const [charCounter, setCharCounter] = useState(0);
@@ -29,10 +29,10 @@ const AddComment = ({
                 url: '/api/publications-comments/',
                 withCredentials: true,
                 data: {
-                    id_publication,
                     comment,
+                    id_publication,
                     id_publications_states,
-                    corrector_id
+                    id_corrector
                 }
             });
             if (res.status === 200) {

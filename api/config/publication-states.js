@@ -1,4 +1,4 @@
-const publicationStates = {
+export const PublicationStates = {
     DRAFT: 0,
     FOR_CORRECTION: 1,
     IN_CORRECTION: 2,
@@ -6,7 +6,3 @@ const publicationStates = {
     PUBLISHED: 4,
     ARCHIVED: 5
 };
-
-module.exports = {
-    publicationStates
-}

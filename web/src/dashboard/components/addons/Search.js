@@ -1,3 +1,4 @@
+import React from 'react';
 import { SearchBox } from './SearchBox';
 import '../../scss/addons/Search.scss';
 

@@ -1,18 +1,18 @@
-require('./config/env.js');
-const express = require('express');
-const rateLimit = require('express-rate-limit');
-const cors = require('cors');
-const passport = require('passport');
-const cookieParser = require('cookie-parser');
-const db = require('./db/db.js');
-const routes = require('./db/routes/routes.js');
-const passportConfig = require('./config/passport.js');
+import './config/env.js';
+import express from 'express';
+import rateLimit from 'express-rate-limit';
+import cors from 'cors';
+import passport from 'passport';
+import cookieParser from 'cookie-parser';
+import Database from './db/database.js';
+import routes from './db/routes/routes.js';
+import passportConfig from './config/passport.js';
 
 const app = express();
 
 (async function() {
     try {
-        await db.authenticate();
+        await Database.authenticate();
         console.log('--- Database connected... ---');
     } catch (error) {
         console.error('--- Database connection error: ---', error);
@@ -20,7 +20,7 @@ const app = express();
 })();
 
 const limiter = rateLimit({
-    windowMs: 1 * 60 * 1000,
+    windowMs: 60 * 1000,
     max: 500,
     standardHeaders: true,
     legacyHeaders: false

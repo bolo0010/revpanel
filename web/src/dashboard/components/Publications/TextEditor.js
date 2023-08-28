@@ -9,7 +9,7 @@ import {
     UnderlineButton,
     UnorderedListButton,
     OrderedListButton,
-    BlockquoteButton,
+    BlockquoteButton
 } from '@draft-js-plugins/buttons';
 import Comments from './Comments';
 import InputForm from '../addons/InputForm';
@@ -28,16 +28,19 @@ import Confirmation from '../addons/Confirmation';
 import AddComment from './AddComment';
 import { messageTimeout } from '../../config/messages';
 import { publicationStates } from '../../config/publication-states';
-import '../../scss/Publications/TextEditor.scss';
 import Buttons from './Buttons';
 import { PublishSelection } from './PublishSelection';
 import { adminSuffix } from '../../config/suffixes';
 import '@draft-js-plugins/counter/lib/plugin.css';
 import '@draft-js-plugins/static-toolbar/lib/plugin.css';
+import '../../scss/Publications/TextEditor.scss';
 
 export const publicationContext = createContext({});
 
-const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) => {
+const TextEditor = ({
+                        publication_id, disablePopout, refreshTable = () => {
+    }
+                    }) => {
     //GET ACTUAL USER------------------------------------------------------------------------------
     const user = useSelector(({ user }) => user.value);
 
@@ -147,8 +150,6 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
                     title={'Potwierdzenie'}
                     handleConfirmation={(option) => handleArchivingOrRestoringRequest(
                         option,
-                        publicationData.id_publications_states,
-                        publicationData.id_corrector,
                         false,
                         'Publikacja została zarchiwizowana.')}
                 />
@@ -161,8 +162,6 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
                     title={'Potwierdzenie'}
                     handleConfirmation={(option) => handleArchivingOrRestoringRequest(
                         option,
-                        publicationData.id_publications_states,
-                        publicationData.id_corrector,
                         true,
                         'Publikacja została przywrócona.')}
                 />
@@ -237,8 +236,8 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
         previous_state,
         next_state,
         id_publications_states,
-        author_id,
-        corrector_id
+        id_author,
+        id_corrector
     ) => {
         setConfirmation(null);
         if (!option) return;
@@ -247,14 +246,14 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
         try {
             const res = await axios({
                 method: 'PATCH',
-                url: `/api/publications/${publication_id}`,
+                url: `/api/publications/state/${publication_id}`,
                 withCredentials: true,
                 data: {
                     previous_state,
                     next_state,
                     id_publications_states,
-                    author_id,
-                    corrector_id
+                    id_author,
+                    id_corrector
                 }
             });
             if (res.status === 200) {
@@ -275,7 +274,11 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
                 withCredentials: true,
                 data: {
                     content,
-                    title
+                    title,
+                    route: publicationData.id_publications_routes,
+                    id_publications_states: publicationData.id_publications_states,
+                    author_id: publicationData.id_author,
+                    corrector_id: publicationData.id_corrector
                 }
             });
             if (res.status === 200) {
@@ -289,8 +292,6 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
 
     const handleArchivingOrRestoringRequest = async (
         option,
-        id_publications_states,
-        corrector_id,
         isArchived,
         message
     ) => {
@@ -300,12 +301,10 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
         try {
             const res = await axios({
                 method: 'PATCH',
-                url: `/api/publications/${publication_id}`,
+                url: `/api/publications/archive/${publication_id}`,
                 withCredentials: true,
                 data: {
-                    isArchived,
-                    id_publications_states,
-                    corrector_id
+                    isArchived
                 }
             });
             if (res.status === 200) {
@@ -352,13 +351,13 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
         try {
             const res = await axios({
                 method: 'PATCH',
-                url: `/api/publications/${publication_id}`,
+                url: `/api/publications/state/${publication_id}`,
                 withCredentials: true,
                 data: {
                     id_publications_states,
-                    next_state,
                     id_publications_routes,
-                    id_publications_types
+                    id_publications_types,
+                    next_state
                 }
             });
             if (res.status === 200) {
@@ -392,7 +391,7 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
             }
             return getDefaultKeyBinding(e);
         },
-        [editorState, setEditorState]
+        [editorState]
     );
 
     let className = 'TextEditor-editor';
@@ -417,7 +416,7 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
             }
             return 'not-handled';
         },
-        [editorState, setEditorState]
+        []
     );
 
     //RENDER---------------------------------------------------------------------------------------
@@ -501,7 +500,7 @@ const TextEditor = ({publication_id, disablePopout, refreshTable = () => {}}) =>
                     <AddComment setShowAddCommentArea={setShowAddCommentArea}
                                 id_publication={publicationData.id}
                                 id_publications_states={publicationData.id_publications_states}
-                                corrector_id={publicationData.id_corrector}
+                                id_corrector={publicationData.id_corrector}
                                 setConfirmation={setConfirmation}
                                 setMessage={setMessage}
                                 refreshPublication={getPublication}

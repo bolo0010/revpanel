@@ -1,3 +1,4 @@
+import React from 'react';
 import '../../scss/addons/ConfirmationButtons.scss';
 
 const ConfirmationButtons = ({ handleConfirmation, cancel, ok, type = 'button', isDisabled = false }) => {

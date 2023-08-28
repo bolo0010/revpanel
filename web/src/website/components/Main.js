@@ -1,7 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import "../scss/Main.scss"
-import { Publications } from './Publications/Publications';
-
 
 const Main = () => {
 	return (

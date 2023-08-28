@@ -1,5 +1,6 @@
-import '../../scss/addons/Confirmation.scss';
+import React from 'react';
 import ConfirmationButtons from './ConfirmationButtons';
+import '../../scss/addons/Confirmation.scss';
 
 const Confirmation = ({ message, title, handleConfirmation }) => {
     return (
