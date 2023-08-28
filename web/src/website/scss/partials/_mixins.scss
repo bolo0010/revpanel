@@ -1,1 +1,30 @@
-//root
+@mixin example {
+  .subpage {
+    margin: 2rem auto;
+    padding: 0;
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      .back-button {
+        align-self: flex-start;
+        background-color: #aa54e1;
+        border-radius: 5px;
+        margin: 0.5rem 0;
+        &:hover {
+          background-color: darken(#aa54e1, 10%);
+        }
+        a {
+          padding: 0.5rem 1rem;
+          display: flex;
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}

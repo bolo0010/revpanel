@@ -1,0 +1,42 @@
+.website {
+  margin: 2rem auto;
+  padding: 0;
+  width: 90%;
+  height: 100vh;
+
+  nav {
+    background-color: #d0d7e1;
+    padding: 0.5rem 0;
+    border-radius: 3px;
+
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li:first-child {
+        background-color: #745dc1;
+        &:hover {
+          background-color: darken(#745dc1, 10%);
+        }
+      }
+
+      li {
+        list-style: none;
+        background-color: #aa54e1;
+        border-radius: 5px;
+        margin: 0 0.5rem;
+
+        &:hover {
+          background-color: darken(#aa54e1, 10%);
+        }
+
+        a {
+          text-decoration: none;
+          color: white;
+          padding: 0.5rem 1rem;
+          display: block;
+        }
+      }
+    }
+  }
+}
