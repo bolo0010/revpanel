@@ -233,7 +233,6 @@ export const getAllPublicationForPanel = async (req, res) => {
         });
     }
 };
-
 export const getPublicationsForWebsite = async (req, res) => {
     const { route } = req.params;
 
@@ -269,7 +268,6 @@ export const getPublicationsForWebsite = async (req, res) => {
         });
     }
 };
-
 export const getPublicationById = async (req, res) => {
     const { id } = req.params;
 
@@ -344,7 +342,6 @@ export const getPublicationById = async (req, res) => {
         });
     }
 };
-
 export const createPublication = async (req, res) => {
     const { id, id_author } = req.body;
     const id_publications_states = 0;
@@ -365,7 +362,6 @@ export const createPublication = async (req, res) => {
         });
     }
 };
-
 export const archivePublication = async (req, res) => {
     const { isArchived } = req.body;
     const { id } = req.params;
@@ -413,12 +409,13 @@ export const archivePublication = async (req, res) => {
         });
     }
 };
-
 export const updateStateOfPublication = async (req, res) => {
     const {
         previous_state,
         next_state,
         id_publications_states,
+        id_publications_types = null,
+        id_publications_routes = null,
         id_author,
         id_corrector,
         route
@@ -523,7 +520,9 @@ export const updateStateOfPublication = async (req, res) => {
                 updatedAt,
                 id_corrector: id_corrector ? id_corrector : corrector,
                 id_publisher: publisher ? publisher : null,
-                id_publications_states: newState
+                id_publications_states: newState,
+                id_publications_types,
+                id_publications_routes
             },
             {
                 where: { id }
@@ -542,14 +541,10 @@ export const updateStateOfPublication = async (req, res) => {
         });
     }
 };
-
-
 export const updatePublication = async (req, res) => {
     const {
         content,
         title,
-        id_publications_types = null,
-        id_publications_routes = null,
         id_author,
         id_corrector,
         id_publications_states
@@ -616,8 +611,6 @@ export const updatePublication = async (req, res) => {
         await Publication.update({
             title,
             updatedAt,
-            id_publications_routes,
-            id_publications_types,
             content: contentRaw
         }, {
             where: { id }
@@ -634,7 +627,6 @@ export const updatePublication = async (req, res) => {
         });
     }
 };
-
 export const deletePublication = async (req, res) => {
     const { id_publications_states, id_author, id } = req.body;
     const { id: id_user } = req.user;

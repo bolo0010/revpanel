@@ -47,7 +47,7 @@ export const loginUser = (req, res, next) => {
             }
         })
         .catch((err) => {
-            next(err);
+            console.error(err);
         });
 };
 
