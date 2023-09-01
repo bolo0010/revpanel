@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Publication } from './Publication';
-import "../../scss/Publications/Publications.scss"
+import '../../scss/Publications/Publications.scss';
 
 
 export const Publications = ({ route }) => {
@@ -20,7 +20,11 @@ export const Publications = ({ route }) => {
                 method: 'GET',
                 url: `/api/publications/public/${route}`
             });
-            setPublications(res.data);
+            if (res.data.length > 0) {
+                setPublications(res.data);
+            } else {
+                setErrorMessage("Brak publikacji.");
+            }
         } catch (error) {
             setErrorMessage(error.response.data.message);
         }
@@ -45,17 +49,19 @@ export const Publications = ({ route }) => {
                         </div>
                         : null
                 }
-                {publications.map(publication => <Publication
-                    content={publication.content}
-                    title={publication.title}
-                    author={
-                        `${publication.author.firstName} 
+                {
+                    publications.map(publication => <Publication
+                        content={publication.content}
+                        title={publication.title}
+                        author={
+                            `${publication.author.firstName} 
                         "${publication.author.nick}" 
                         ${publication.author.secondName}`}
-                    date={publication.publishedAt}
-                    type={publication.publications_type.type_pl}
-                    key={publication.id}
-                />)}
+                        date={publication.publishedAt}
+                        type={publication.publications_type.type_pl}
+                        key={publication.id}
+                    />)
+                }
             </div>
         </>
     );
