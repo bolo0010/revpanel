@@ -7,8 +7,13 @@ import cookieParser from 'cookie-parser';
 import Database from './db/database.js';
 import routes from './db/routes/routes.js';
 import passportConfig from './config/passport.js';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 (async function() {
     try {
@@ -37,6 +42,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(limiter);
+app.use('/assets', express.static(path.join(__dirname, '/assets/')));
 app.use('/api', routes);
 
 app.listen(5000, () => console.log('--- Express server is running... ---'));

@@ -16,6 +16,8 @@ import Terms from './addons/Terms';
 import { setErrorMessage, setIsValid } from '../../utils/stores/features/login/loginSlice';
 import '../scss/Panel.scss';
 import { AdminsGroup } from '../config/roles';
+import { getUserAvatar } from '../config/avatar';
+
 
 const Panel = () => {
     const dispatch = useDispatch();
@@ -59,6 +61,7 @@ const Panel = () => {
                 active: res.data.isActive
             });
             if (access.auth) {
+                getUserAvatar();
                 dispatch(setUser(res.data.user));
                 checkIsAdmin(res.data.user.role.id);
                 dispatch(setIsValid(true));

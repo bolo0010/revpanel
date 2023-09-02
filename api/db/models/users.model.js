@@ -80,6 +80,11 @@ const User = Database.define(
         title: {
             type: DataTypes.STRING(100),
             defaultValue: ''
+        },
+        avatarFn: {
+            type: DataTypes.STRING(41),
+            allowNull: true,
+            defaultValue: null
         }
     },
     {

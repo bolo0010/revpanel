@@ -10,6 +10,9 @@ import { FailedResponses, SuccessResponses } from '../../config/responses.js';
 import { AdminsGroup, Roles } from '../../config/roles.js';
 import { getPagination, getPagingData } from '../../config/pagination.js';
 import Database from '../database.js';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { PATH_TO_IMAGES } from '../../config/multer.js';
 
 export const getAllUsers = async (req, res) => {
     const {
@@ -516,6 +519,76 @@ export const updateUserById = async (req, res) => {
         });
     } catch (err) {
         console.error(err.message);
+        res.status(500).json({
+            success: false,
+            message: FailedResponses.SERVER_ERROR
+        });
+    }
+};
+
+export const getUserAvatar = async (req, res) => {
+    const { id } = req.user;
+
+    try {
+        const { avatarFn } = await User.findOne({
+            attributes: ['avatarFn'],
+            where: {
+                id
+            }
+        });
+
+        if (avatarFn === null || !avatarFn) {
+            res.status(200).json({
+                success: true,
+                name: 'default-avatar.svg',
+                path: ''
+            });
+            return;
+        }
+        res.status(200).json({
+            success: true,
+            name: avatarFn,
+            path: ''
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({
+            success: false,
+            message: FailedResponses.SERVER_ERROR
+        });
+    }
+};
+
+export const changeUserAvatar = async (req, res) => {
+    const { file } = req;
+    const { id } = req.user;
+
+    try {
+        const { avatarFn } = await User.findOne({
+            attributes: ['avatarFn'],
+            where: {
+                id
+            }
+        });
+
+        if (avatarFn) {
+            await fs.unlink(path.join(PATH_TO_IMAGES, avatarFn));
+        }
+
+        await User.update(
+            { avatarFn: file.filename },
+            {
+                where: {
+                    id
+                }
+            }
+        );
+        res.status(200).json({
+            success: true,
+            message: SuccessResponses.AVATAR_CHANGE_SUCCESS
+        });
+    } catch (error) {
+        console.error(error.message);
         res.status(500).json({
             success: false,
             message: FailedResponses.SERVER_ERROR

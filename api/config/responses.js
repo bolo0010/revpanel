@@ -16,6 +16,7 @@ export const SuccessResponses = {
     PUBLICATION_RESTORE_SUCCESS: 'Publikacja została przywrócona.',
     PUBLICATION_SAVE_SUCCESS: 'Zapisano pomyślnie.',
     PUBLICATION_STATUS_CHANGE_SUCCESS: 'Status publikacji został zaktualizowany.',
+    AVATAR_CHANGE_SUCCESS: 'Zdjęcie profilowe zostało zmienione.',
 };
 export const FailedResponses = {
     LOGIN_FAILED: 'Nieprawidłowy login lub hasło!',
@@ -38,4 +39,7 @@ export const FailedResponses = {
     PUBLICATION_NOT_SELECTED_ROUTE: 'Publikacja nie ma ustawionej ścieżki głównej. Nie można wykonać operacji opublikowania.',
     INPUTS_ARE_EMPTY: 'Wypełnij wszystkie wymagane pola',
     USER_NOT_FOUND: 'Nie znaleziono użytkownika.',
+    FILE_NOT_ADDED: 'Nie dodano pliku.',
+    FILE_SIZE_TOO_BIG: 'Rozmiar pliku jest za duży.',
+    FILE_TYPE_MISMATCH: 'Niepoprawny format pliku.',
 };
