@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import '../../scss/Settings/Settings.scss';
 import Message from '../addons/Message';
 import Confirmation from '../addons/Confirmation';
 import InputForm from '../addons/InputForm';
@@ -18,6 +17,7 @@ import { adminRoles } from '../../config/id-roles';
 import { setUser } from '../../../utils/stores/features/user/userSlice';
 import About from './About';
 import Avatar from './Avatar';
+import '../../scss/Settings/Settings.scss';
 
 const Settings = () => {
     const dispatch = useDispatch();
@@ -174,7 +174,6 @@ const Settings = () => {
         <>
             <main className='settings'>
                 {confirmation}
-                <h2 className='settings__title'>Ustawienia konta</h2>
                 <div className="settings-left">
                     <About values={values} />
                     <Avatar />

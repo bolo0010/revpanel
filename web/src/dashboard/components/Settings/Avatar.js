@@ -4,8 +4,8 @@ import { messageTimeout } from '../../config/messages';
 import Message from '../addons/Message';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import '../../scss/Settings/Avatar.scss';
 import { MAX_FILE_SIZE, getUserAvatar } from '../../config/avatar';
+import '../../scss/Settings/Avatar.scss';
 
 const Avatar = () => {
     const avatar = useSelector(({ user }) => user.value.avatar);

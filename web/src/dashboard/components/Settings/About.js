@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../scss/Settings/About.scss';
 import { useSelector } from 'react-redux';
+import '../../scss/Settings/About.scss';
 
 const About = ({ values }) => {
     const avatar = useSelector(({ user }) => user.value.avatar);
