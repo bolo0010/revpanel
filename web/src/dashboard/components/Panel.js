@@ -8,7 +8,7 @@ import Home from './Home/Home';
 import Footer from './Footer';
 import Nav from './Nav';
 import Publications from './Publications/Publications';
-import Settings from './Settings';
+import Settings from './Settings/Settings';
 import Admin from './Admin/Admin';
 import { setAdminRoute, setUser } from '../../utils/stores/features/user/userSlice';
 import Confirmation from './addons/Confirmation';
