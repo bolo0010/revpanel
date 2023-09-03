@@ -8,7 +8,7 @@ import Home from './Home/Home';
 import Footer from './Footer';
 import Nav from './Nav';
 import Publications from './Publications/Publications';
-import Settings from './Settings';
+import Settings from './Settings/Settings';
 import Admin from './Admin/Admin';
 import { setAdminRoute, setUser } from '../../utils/stores/features/user/userSlice';
 import Confirmation from './addons/Confirmation';
@@ -16,6 +16,8 @@ import Terms from './addons/Terms';
 import { setErrorMessage, setIsValid } from '../../utils/stores/features/login/loginSlice';
 import '../scss/Panel.scss';
 import { AdminsGroup } from '../config/roles';
+import { getUserAvatar } from '../config/avatar';
+
 
 const Panel = () => {
     const dispatch = useDispatch();
@@ -59,6 +61,7 @@ const Panel = () => {
                 active: res.data.isActive
             });
             if (access.auth) {
+                getUserAvatar();
                 dispatch(setUser(res.data.user));
                 checkIsAdmin(res.data.user.role.id);
                 dispatch(setIsValid(true));

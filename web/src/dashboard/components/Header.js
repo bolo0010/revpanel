@@ -2,12 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import header from '../img/header.svg';
-import avatar1 from '../img/avatar1.svg';
 import '../scss/Header.scss';
 
 const Header = ({toggleMobileMenu, isHamburgerClicked}) => {
     const { nick } = useSelector(({user}) => user.value);
     const { role_pl } = useSelector(({user}) => user.value.role);
+    const avatar = useSelector(({ user }) => user.value.avatar);
+
     return (
         <>
             <header className="header">
@@ -18,7 +19,7 @@ const Header = ({toggleMobileMenu, isHamburgerClicked}) => {
                 </div>
                 <div className="header__user-info">
                     <div className="user-info__avatar">
-                        <img src={avatar1} alt="Avatar" className="avatar" />
+                        <img src={avatar} alt="Avatar" className="avatar" />
                     </div>
                     <div onClick={toggleMobileMenu}
                          className={isHamburgerClicked ? 'header__hamburger header__hamburger--rotate' : 'header__hamburger '}>

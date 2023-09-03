@@ -1,0 +1,113 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-small) {
+  .avatar-change__image-container {
+    width: 25%;
+  }
+  .avatar-change__add {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .avatar-change__image-container {
+    width: 15%;
+  }
+  .avatar-change__add {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: $mq-medium) {
+  .avatar-change__image-container {
+    width: 10%;
+  }
+  .avatar-change__add {
+    width: 90%;
+    .avatar-change__filename:hover {
+      overflow: visible;
+      z-index: 1000;
+      background-color: lighten($main-color, 10%);
+      position: absolute;
+      max-width: 100%;
+      margin-left: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-large) {
+  .avatar-change {
+    margin-top: 10px;
+    .avatar-change__filename {
+      max-width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-large) {
+  .avatar-change {
+    margin-top: 2rem;
+
+    .avatar-change__image-container {
+      width: 50%;
+    }
+    .avatar-change__add {
+      width: 50%;
+    }
+    .avatar-change__filename {
+      max-width: 100px;
+    }
+  }
+}
+
+.avatar-change {
+  @include settings-border($border-color);
+  .avatar-change__title {
+    @include settings-title(15px);
+  }
+  .avatar-change__form {
+    @include settings-form-container;
+    justify-content: space-between;
+    .avatar-change__image {
+      display: flex;
+      .avatar-change__avatar {
+        max-width: 90%;
+      }
+      .avatar-change__add {
+        display: flex;
+        flex-wrap: wrap;
+        .avatar-change__add-container {
+          display: flex;
+          margin-top: auto;
+          align-items: center;
+          width: 100%;
+          .avatar-change__add-btn {
+            margin: 0 5px;
+            color: $main-color;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover {
+              @include link-hover($main-color);
+            }
+          }
+          .avatar-change__filename {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        .avatar-change__warning {
+          width: 100%;
+          margin: 5px 5px;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    .avatar-change__save-btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

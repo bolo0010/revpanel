@@ -1,0 +1,46 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-large) {
+  .about-me {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $mq-large) {
+  .about-me {
+    width: 20%;
+  }
+}
+
+.about-me {
+  @include settings-border($border-color);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  max-height: 100px;
+  width: 100%;
+  font-size: 0.9rem;
+  .about-me__avatar {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    .avatar {
+    }
+  }
+  .about-me__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    overflow: hidden;
+    .role {
+      color: red;
+    }
+    .title {
+      color: blue;
+    }
+  }
+}

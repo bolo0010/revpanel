@@ -1,0 +1,65 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+@media screen and (max-width: $mq-large) {
+  .settings {
+    flex-direction: column;
+    .settings-left, .settings-right {
+      max-width: 100%;
+      .edit {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mq-large) {
+  .settings {
+    flex-direction: row;
+    .settings-left {
+      max-width: 25%;
+    }
+    .settings-right {
+      max-width: 50%;
+    }
+  }
+}
+
+.settings {
+  background-color: $panel-color;
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 30px 80px 30px;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  .edit {
+    @include settings-border($border-color);
+    margin-bottom: auto;
+    .edit__title {
+      @include settings-title(15px);
+    }
+    .edit__form {
+      @include settings-form-container;
+      justify-content: space-between;
+    }
+  }
+  .change-password {
+    @include settings-border($border-color);
+    margin-bottom: auto;
+    margin-top: 1rem;
+    .change-password__form {
+      @include settings-form-container;
+    }
+    .change-password__title {
+      @include settings-title(15px);
+    }
+  }
+}
+
+.form__submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  flex-basis: 100%;
+}
