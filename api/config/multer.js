@@ -8,8 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 export const MAX_FILE_SIZE = 2097152;
 
-// export const PATH_TO_IMAGES = path.join('/home/', '/okamikya/', '/domains/', '/arturmaslowski.pl/', '/public_html', '/assets/', '/img/')
-export const PATH_TO_IMAGES = path.join(__dirname, '/../', '/assets/', '/img/');
+export const PATH_TO_IMAGES = path.join('/home/', '/nijahwcrzn/', '/domains/', '/panel.arturmaslowski.pl/', '/public_html/', '/assets/', '/img/')
+// export const PATH_TO_IMAGES = path.join(__dirname, '/../', '/assets/', '/img/');
 
 const filename = {
     filename: function (req, file, cb) {

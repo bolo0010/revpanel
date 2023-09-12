@@ -35,7 +35,8 @@ passportConfig(passport);
 app.use(passport.initialize());
 
 app.use(cors({
-    origin: 'https://origami.networkmanager.pl/'
+    origin: 'https://panel.arturmaslowski.pl/'
+    // origin: 'http://localhost:5000/'
 }));
 
 app.use(cookieParser());

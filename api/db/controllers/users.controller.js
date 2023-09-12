@@ -296,7 +296,7 @@ export const updateUser = async (req, res) => {
     } = req.body;
     const { id, role } = req.user;
 
-    if (AdminsGroup.includes(role)) {
+    if (AdminsGroup.includes(role) && password === undefined) {
         if (!firstName || !secondName || !title || !dateOfBirth || !nick)
             res.status(400).json({
                 success: false,
@@ -387,7 +387,7 @@ export const getCurrentUser = async (req, res) => {
                 'inpost',
                 'dateOfBirth',
                 'isActive',
-                'isTermsAccepted',
+                'isTermsAccepted'
             ],
             where: { id },
             include: [
