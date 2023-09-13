@@ -1,6 +1,6 @@
 # Panel
 
-This is a administration panel. It was created to manage flow of publications.
+Demo version of an application created to manage content on a website. It allows you to create texts and evaluate them. Allows you to publish different content and allows you to manage users belonging to the editorial team.
 
 ## Tech Stack
 
@@ -36,20 +36,20 @@ This is a administration panel. It was created to manage flow of publications.
 
 ## Features
 
-1. Creating, editing and deleting your publications.
-2. Listing all publications.
-3. Publishing, archivizing and commenting publications.
-4. Creating and editing users.
-5. Listing all users.
-6. Changing your data and password.
+* Creating, editing and deleting your publications
+* Listing all publications
+* Publishing, archivizing and commenting publications
+* Creating and editing users
+* Listing all users
+* Changing your data and password
 
 ## User groups
 
-| Group             | Permissions                                                        |
-| ----------------- | ------------------------------------------------------------------ |
-| Reviewers | creating new publications; editing and sending to correction own publications; changing profile settings  |
+| Group             | Permissions                                                       |
+| ----------------- | ----------------------------------------------------------------- |
+| Reviewers | creating new publications; editing and sending to correction own publications; changing profile settings |
 | Correctors | taking publications for corrections; approving or sending back publications; archivizing and commenting publications |
-| Moderators | publicating or sending back publications; |
+| Moderators | publicating or sending back publications |
 | Admins | adding new users; editing and deactivating/reactivating users; editing terms pop-out |
 | HeadAdmins | * |
 
@@ -58,9 +58,8 @@ Each group has the permissions of a group lower in the hierarchy.
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file:  
-`DB_NAME`  
-`DB_USERNAME`  
-`DB_PASS`  
+
+`DB_NAME` `DB_USERNAME` `DB_PASS`  
 
 Also you will need a database. Models are defined in the folder: `api/db/models`
 
@@ -72,12 +71,13 @@ You will have to generate public and private keys:
 
 Algorithm: `RS256`
 
-## Example account
+## Demo
 
-Login: AdminUser  
-Password: password1234
+https://panel.arturmaslowski.pl/
 
-### Demo: [WWW](https://origami.networkmanager.pl/panel)
+##### Login: AdminUser
+##### Password: abcd1234
+
 
 
 
