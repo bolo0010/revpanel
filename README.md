@@ -43,6 +43,20 @@ Demo version of an application created to manage content on a website. It allows
 * Listing all users
 * Changing your data and password
 
+## Screenshots
+
+#### > Login view <
+
+![Login](https://i.ibb.co/gZsyyTz/login.png)
+
+#### > Publications <
+
+![Publications](https://i.ibb.co/hHwPFmf/panel.png)
+
+#### > Settings <
+
+![Settings](https://i.ibb.co/kJB2qJK/panel2.png)
+
 ## User groups
 
 | Group             | Permissions                                                       |
